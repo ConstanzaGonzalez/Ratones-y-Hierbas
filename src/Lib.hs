@@ -41,3 +41,30 @@ obtenerUltimasLetras :: String -> String -> String
 obtenerUltimasLetras tipoHierba enfermedad = drop (length enfermedad - length tipoHierba) enfermedad
 
 
+alcachofa :: Raton -> Raton
+alcachofa = modificarPeso reducirPesoPorcentaje
+
+modificarPeso :: (Raton -> Float) -> Raton -> Raton
+modificarPeso f raton = raton { peso = f raton}
+
+reducirPesoPorcentaje :: Raton -> Float
+reducirPesoPorcentaje raton 
+            | peso raton > 2 = peso raton - peso raton * 0.1
+            | otherwise = peso raton - peso raton * 0.05
+
+hierbaZort :: Raton -> Raton
+hierbaZort = modificarEdad perderEdad . modificarEnfermedades perderEnfermedades
+
+perderEdad :: Raton -> Float
+perderEdad raton = 0
+
+perderEnfermedades :: Raton -> Enfermedades
+perderEnfermedades raton = []
+
+hierbaDelDiablo :: Raton -> Raton
+hierbaDelDiablo = modificarPeso reducirPeso
+
+reducirPeso :: Raton -> Float
+reducirPeso raton 
+        | (peso raton - 0.1 ) < 0 = 0
+        | otherwise = peso raton - 0.1
