@@ -103,8 +103,8 @@ cantidadIdeal condicion =  encontrarIdeal condicion [1..]
 encontrarIdeal :: (Int -> Bool) -> [Int] -> Int
 encontrarIdeal condicion [] = 0
 encontrarIdeal condicion (cabeza:cola) 
-                        | condicion cabeza = cabeza
-                        |otherwise = encontrarIdeal condicion cola
+                    | condicion cabeza = cabeza
+                    |otherwise = encontrarIdeal condicion cola
 
 -- cantidadIdeal condicion = head (filter condicion [1..])
 
